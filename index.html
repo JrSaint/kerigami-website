@@ -59,12 +59,18 @@
         transform: scale(0.99) rotate(var(--fold-r3, 0.5deg)) translate(var(--fold-x3, 2px), var(--fold-y3, 4px));
       }
     }
-    /* Gradient text matching logo palette */
+    /* Animated gradient text matching logo palette */
     .gradient-text {
-      background: linear-gradient(135deg, #5BBEC4 0%, #8ED4B0 35%, #F0A878 70%, #E87F5F 100%);
+      background: linear-gradient(135deg, #5BBEC4, #8ED4B0, #F0A878, #E87F5F, #5BBEC4, #8ED4B0, #F0A878);
+      background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     /* Heading tracking to match the KERIGAMI wordmark */
     .brand-tracking {
