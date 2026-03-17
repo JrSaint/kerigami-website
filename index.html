@@ -37,62 +37,81 @@
     .origami-panel {
       position: absolute;
       pointer-events: none;
-      transform-origin: var(--fold-hinge, left);
-      perspective: 800px;
+      transform-origin: center;
       animation:
-        var(--fold-anim, fold-left) var(--fold-dur, 20s) ease-in-out infinite,
-        drift var(--drift-dur, 25s) ease-in-out infinite;
-      animation-delay: var(--fold-delay, 0s);
+        var(--morph-anim, morph-a) var(--morph-dur, 18s) ease-in-out infinite,
+        var(--float-anim, float-a) var(--float-dur, 22s) linear infinite;
+      animation-delay: var(--anim-delay, 0s);
     }
-    /* Multi-stage fold from left — dramatic journey */
-    @keyframes fold-left {
-      0%   { transform: perspective(800px) rotateY(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
-      15%  { transform: perspective(800px) rotateY(-30deg) rotateZ(2deg) scale(1.12);   opacity: 0.7; }
-      35%  { transform: perspective(800px) rotateY(-10deg) rotateZ(-1deg) scale(0.88);  opacity: 0.95; }
-      55%  { transform: perspective(800px) rotateY(-45deg) rotateZ(3deg) scale(1.18);   opacity: 0.5; }
-      75%  { transform: perspective(800px) rotateY(-15deg) rotateZ(-2deg) scale(0.92);  opacity: 0.85; }
-      100% { transform: perspective(800px) rotateY(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
+    /* Gentle shape morph A — slow breathing tilt & scale */
+    @keyframes morph-a {
+      0%   { transform: perspective(800px) rotateY(-5deg) rotateX(3deg) rotateZ(0deg) scale(1);     opacity: 0.9; }
+      25%  { transform: perspective(800px) rotateY(4deg) rotateX(-2deg) rotateZ(1.5deg) scale(1.1);  opacity: 0.75; }
+      50%  { transform: perspective(800px) rotateY(-3deg) rotateX(5deg) rotateZ(-1deg) scale(0.92);  opacity: 0.85; }
+      75%  { transform: perspective(800px) rotateY(6deg) rotateX(-4deg) rotateZ(2deg) scale(1.06);   opacity: 0.7; }
+      100% { transform: perspective(800px) rotateY(-5deg) rotateX(3deg) rotateZ(0deg) scale(1);     opacity: 0.9; }
     }
-    /* Multi-stage fold from right */
-    @keyframes fold-right {
-      0%   { transform: perspective(800px) rotateY(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
-      20%  { transform: perspective(800px) rotateY(35deg) rotateZ(-2deg) scale(1.15);   opacity: 0.65; }
-      45%  { transform: perspective(800px) rotateY(12deg) rotateZ(1deg) scale(0.85);    opacity: 0.9; }
-      70%  { transform: perspective(800px) rotateY(50deg) rotateZ(-3deg) scale(1.1);    opacity: 0.45; }
-      100% { transform: perspective(800px) rotateY(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
+    /* Gentle shape morph B — offset breathing */
+    @keyframes morph-b {
+      0%   { transform: perspective(800px) rotateY(3deg) rotateX(-4deg) rotateZ(1deg) scale(1.05);  opacity: 0.8; }
+      25%  { transform: perspective(800px) rotateY(-6deg) rotateX(2deg) rotateZ(-1.5deg) scale(0.9); opacity: 0.9; }
+      50%  { transform: perspective(800px) rotateY(5deg) rotateX(-3deg) rotateZ(2deg) scale(1.12);   opacity: 0.7; }
+      75%  { transform: perspective(800px) rotateY(-2deg) rotateX(5deg) rotateZ(-0.5deg) scale(0.95); opacity: 0.85; }
+      100% { transform: perspective(800px) rotateY(3deg) rotateX(-4deg) rotateZ(1deg) scale(1.05);  opacity: 0.8; }
     }
-    /* Multi-stage fold from top */
-    @keyframes fold-top {
-      0%   { transform: perspective(800px) rotateX(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
-      25%  { transform: perspective(800px) rotateX(30deg) rotateZ(2deg) scale(1.2);     opacity: 0.6; }
-      50%  { transform: perspective(800px) rotateX(8deg) rotateZ(-1deg) scale(0.82);    opacity: 0.9; }
-      75%  { transform: perspective(800px) rotateX(40deg) rotateZ(1deg) scale(1.08);    opacity: 0.5; }
-      100% { transform: perspective(800px) rotateX(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
+    /* Gentle shape morph C — wider scale for bottom panels */
+    @keyframes morph-c {
+      0%   { transform: perspective(800px) rotateY(-2deg) rotateX(-6deg) rotateZ(0.5deg) scale(1);    opacity: 0.85; }
+      25%  { transform: perspective(800px) rotateY(4deg) rotateX(-12deg) rotateZ(-1deg) scale(1.15);  opacity: 0.65; }
+      50%  { transform: perspective(800px) rotateY(-5deg) rotateX(-4deg) rotateZ(1.5deg) scale(0.9);  opacity: 0.8; }
+      75%  { transform: perspective(800px) rotateY(3deg) rotateX(-10deg) rotateZ(-0.5deg) scale(1.2); opacity: 0.55; }
+      100% { transform: perspective(800px) rotateY(-2deg) rotateX(-6deg) rotateZ(0.5deg) scale(1);    opacity: 0.85; }
     }
-    /* Multi-stage fold from bottom */
-    @keyframes fold-bottom {
-      0%   { transform: perspective(800px) rotateX(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
-      30%  { transform: perspective(800px) rotateX(-35deg) rotateZ(-2deg) scale(1.16);  opacity: 0.6; }
-      55%  { transform: perspective(800px) rotateX(-10deg) rotateZ(1deg) scale(0.86);   opacity: 0.85; }
-      80%  { transform: perspective(800px) rotateX(-45deg) rotateZ(2deg) scale(1.12);   opacity: 0.4; }
-      100% { transform: perspective(800px) rotateX(0deg) rotateZ(0deg) scale(1);       opacity: 1; }
-    }
-    /* Diagonal fold — multi-stage */
-    @keyframes fold-corner {
-      0%   { transform: perspective(800px) rotate3d(1,1,0,0deg) scale(1);      opacity: 1; }
-      20%  { transform: perspective(800px) rotate3d(1,1,0,25deg) scale(1.18);   opacity: 0.65; }
-      40%  { transform: perspective(800px) rotate3d(1,0.3,0,40deg) scale(0.82); opacity: 0.4; }
-      60%  { transform: perspective(800px) rotate3d(0.3,1,0,15deg) scale(1.14); opacity: 0.75; }
-      80%  { transform: perspective(800px) rotate3d(1,1,0.5,30deg) scale(0.9);  opacity: 0.55; }
-      100% { transform: perspective(800px) rotate3d(1,1,0,0deg) scale(1);      opacity: 1; }
-    }
-    /* Wide positional drift for dynamic feel */
-    @keyframes drift {
+    /* Floating path A — wide clockwise oval */
+    @keyframes float-a {
       0%   { translate: 0 0; }
-      20%  { translate: 4% -3%; }
-      40%  { translate: -3% 4%; }
-      60%  { translate: 5% 2%; }
-      80%  { translate: -2% -4%; }
+      12%  { translate: 3% -1.5%; }
+      25%  { translate: 5% 0.5%; }
+      37%  { translate: 3% 3%; }
+      50%  { translate: 0 4%; }
+      62%  { translate: -3% 2.5%; }
+      75%  { translate: -5% 0; }
+      87%  { translate: -3% -2%; }
+      100% { translate: 0 0; }
+    }
+    /* Floating path B — counter-clockwise figure-8 */
+    @keyframes float-b {
+      0%   { translate: 0 0; }
+      12%  { translate: -2% -2%; }
+      25%  { translate: -4% 0; }
+      37%  { translate: -2% 3%; }
+      50%  { translate: 1% 1%; }
+      62%  { translate: 3% -2%; }
+      75%  { translate: 4% 0.5%; }
+      87%  { translate: 2% 3%; }
+      100% { translate: 0 0; }
+    }
+    /* Floating path C — gentle diagonal drift */
+    @keyframes float-c {
+      0%   { translate: 0 0; }
+      15%  { translate: 2% 2%; }
+      30%  { translate: 5% 1%; }
+      45%  { translate: 3% -2%; }
+      60%  { translate: -1% -3%; }
+      75%  { translate: -4% -1%; }
+      90%  { translate: -2% 1.5%; }
+      100% { translate: 0 0; }
+    }
+    /* Floating path D — bottom panels, downward-biased oval */
+    @keyframes float-d {
+      0%   { translate: 0 0; }
+      12%  { translate: 3% 3%; }
+      25%  { translate: 4% 7%; }
+      37%  { translate: 1% 9%; }
+      50%  { translate: -2% 7%; }
+      62%  { translate: -4% 4%; }
+      75%  { translate: -3% 1%; }
+      87%  { translate: -1% -1%; }
       100% { translate: 0 0; }
     }
     /* Animated gradient text — seamless loop with tight color bands */
@@ -193,43 +212,55 @@
 
   <!-- Origami geometric background — unfolding planes with drift -->
   <div class="origami-bg" aria-hidden="true">
-    <!-- Top-left teal — folds open from left edge -->
-    <svg class="origami-panel" style="top:0;left:0;width:55%;height:45%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:10s;--drift-dur:14s;--fold-delay:0s;" viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Top-left teal -->
+    <svg class="origami-panel" style="top:0;left:0;width:55%;height:45%;--morph-anim:morph-a;--morph-dur:18s;--float-anim:float-a;--float-dur:24s;--anim-delay:0s;" viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 800,0 500,500 0,400" fill="rgba(91,190,196,0.08)"/>
       <polygon points="0,0 500,500 0,400" fill="rgba(91,190,196,0.05)"/>
       <line x1="0" y1="0" x2="500" y2="500" stroke="rgba(91,190,196,0.06)" stroke-width="1"/>
     </svg>
-    <!-- Top-right mint — folds open from right edge -->
-    <svg class="origami-panel" style="top:0;right:0;width:50%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:12s;--drift-dur:15s;--fold-delay:-4s;" viewBox="0 0 700 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Top-right mint -->
+    <svg class="origami-panel" style="top:0;right:0;width:50%;height:35%;--morph-anim:morph-b;--morph-dur:20s;--float-anim:float-b;--float-dur:26s;--anim-delay:-5s;" viewBox="0 0 700 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="200,0 700,0 700,400" fill="rgba(142,212,176,0.07)"/>
       <polygon points="700,0 700,400 400,300" fill="rgba(142,212,176,0.04)"/>
       <line x1="200" y1="0" x2="700" y2="400" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
     </svg>
-    <!-- Right peach — folds open from right edge -->
-    <svg class="origami-panel" style="top:25%;right:0;width:40%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:11s;--drift-dur:16s;--fold-delay:-8s;" viewBox="0 0 500 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Right peach -->
+    <svg class="origami-panel" style="top:25%;right:0;width:40%;height:35%;--morph-anim:morph-a;--morph-dur:22s;--float-anim:float-c;--float-dur:28s;--anim-delay:-8s;" viewBox="0 0 500 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="500,0 500,400 100,300" fill="rgba(240,168,120,0.07)"/>
       <polygon points="500,0 300,200 500,400" fill="rgba(240,168,120,0.04)"/>
       <line x1="500" y1="0" x2="100" y2="300" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
     </svg>
-    <!-- Left mint mid — folds open from left edge -->
-    <svg class="origami-panel" style="top:40%;left:0;width:45%;height:30%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:13s;--drift-dur:11s;--fold-delay:-6s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Left mint mid -->
+    <svg class="origami-panel" style="top:40%;left:0;width:45%;height:30%;--morph-anim:morph-b;--morph-dur:19s;--float-anim:float-b;--float-dur:22s;--anim-delay:-3s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 400,50 300,350 0,350" fill="rgba(142,212,176,0.06)"/>
       <polygon points="0,0 300,350 0,350" fill="rgba(142,212,176,0.04)"/>
       <line x1="0" y1="0" x2="300" y2="350" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
     </svg>
-    <!-- Central horizontal crease — folds from top edge -->
-    <svg class="origami-panel" style="top:50%;left:0;width:100%;height:20%;--fold-hinge:top;--fold-anim:fold-top;--fold-dur:14s;--drift-dur:18s;--fold-delay:-10s;" viewBox="0 0 1440 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Central horizontal crease -->
+    <svg class="origami-panel" style="top:50%;left:0;width:100%;height:20%;--morph-anim:morph-a;--morph-dur:24s;--float-anim:float-c;--float-dur:30s;--anim-delay:-12s;" viewBox="0 0 1440 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,100 1440,0 1440,150 0,250" fill="rgba(240,168,120,0.04)"/>
       <line x1="0" y1="125" x2="1440" y2="75" stroke="rgba(240,168,120,0.06)" stroke-width="1"/>
     </svg>
-    <!-- Bottom-left peach — diagonal corner fold -->
-    <svg class="origami-panel" style="bottom:10%;left:0;width:50%;height:30%;--fold-hinge:bottom left;--fold-anim:fold-corner;--fold-dur:12s;--drift-dur:13s;--fold-delay:-14s;" viewBox="0 0 700 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Center-left teal -->
+    <svg class="origami-panel" style="top:30%;left:10%;width:35%;height:25%;--morph-anim:morph-b;--morph-dur:21s;--float-anim:float-a;--float-dur:25s;--anim-delay:-7s;" viewBox="0 0 500 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,50 450,0 500,300 50,350" fill="rgba(91,190,196,0.06)"/>
+      <polygon points="0,50 500,300 50,350" fill="rgba(91,190,196,0.04)"/>
+      <line x1="0" y1="50" x2="500" y2="300" stroke="rgba(91,190,196,0.05)" stroke-width="1"/>
+    </svg>
+    <!-- Center-right peach -->
+    <svg class="origami-panel" style="top:35%;right:5%;width:30%;height:20%;--morph-anim:morph-a;--morph-dur:17s;--float-anim:float-b;--float-dur:23s;--anim-delay:-10s;" viewBox="0 0 400 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="100,0 400,50 350,300 0,250" fill="rgba(240,168,120,0.05)"/>
+      <polygon points="400,50 350,300 150,200" fill="rgba(240,168,120,0.04)"/>
+      <line x1="100" y1="0" x2="350" y2="300" stroke="rgba(240,168,120,0.04)" stroke-width="1"/>
+    </svg>
+    <!-- Bottom-left peach -->
+    <svg class="origami-panel" style="bottom:10%;left:0;width:50%;height:30%;--morph-anim:morph-c;--morph-dur:20s;--float-anim:float-d;--float-dur:26s;--anim-delay:-14s;" viewBox="0 0 700 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 600,100 400,350 0,350" fill="rgba(240,168,120,0.06)"/>
       <polygon points="0,0 400,350 0,350" fill="rgba(240,168,120,0.04)"/>
       <line x1="0" y1="0" x2="400" y2="350" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
     </svg>
-    <!-- Bottom-right teal — folds from bottom edge -->
-    <svg class="origami-panel" style="bottom:5%;right:0;width:45%;height:30%;--fold-hinge:bottom;--fold-anim:fold-bottom;--fold-dur:10s;--drift-dur:15s;--fold-delay:-3s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Bottom-right teal -->
+    <svg class="origami-panel" style="bottom:5%;right:0;width:45%;height:30%;--morph-anim:morph-c;--morph-dur:22s;--float-anim:float-d;--float-dur:24s;--anim-delay:-4s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="600,0 600,350 100,250" fill="rgba(91,190,196,0.07)"/>
       <polygon points="600,0 400,200 600,350" fill="rgba(91,190,196,0.04)"/>
       <line x1="600" y1="0" x2="100" y2="250" stroke="rgba(91,190,196,0.05)" stroke-width="1"/>
