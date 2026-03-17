@@ -26,17 +26,17 @@
     };
   </script>
   <style>
-    /* Origami unfolding background — layered geometric planes */
+    /* Origami unfolding background — absolute panels spread across page */
     .origami-bg {
-      position: fixed;
+      position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
     }
-    .origami-bg svg {
-      width: 100%;
-      height: 100%;
+    .origami-panel {
+      position: absolute;
+      pointer-events: none;
     }
     /* Gradient text matching logo palette */
     .gradient-text {
@@ -54,41 +54,48 @@
 </head>
 <body class="bg-paper-50 text-gray-900 min-h-screen flex flex-col antialiased overflow-x-hidden">
 
-  <!-- Origami geometric background — soft unfolding planes -->
+  <!-- Origami geometric background — unfolding planes -->
   <div class="origami-bg" aria-hidden="true">
-    <svg viewBox="0 0 1440 2800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <!-- Large slow-unfolding panels -->
-      <polygon points="0,0 720,0 400,500" fill="rgba(91,190,196,0.035)"/>
-      <polygon points="720,0 1440,0 1440,400 600,350" fill="rgba(142,212,176,0.025)"/>
-      <polygon points="0,0 400,500 0,600" fill="rgba(91,190,196,0.02)"/>
-
-      <!-- Mid-page folds -->
-      <polygon points="1440,300 1440,900 900,600" fill="rgba(240,168,120,0.03)"/>
-      <polygon points="0,500 500,700 200,1000 0,900" fill="rgba(142,212,176,0.03)"/>
-      <polygon points="600,400 1100,500 800,800" fill="rgba(91,190,196,0.02)"/>
-
-      <!-- Central origami crease -->
-      <polygon points="0,900 1440,700 1440,1100 0,1300" fill="rgba(240,168,120,0.02)"/>
-      <polygon points="300,800 900,750 700,1100 100,1100" fill="rgba(91,190,196,0.025)"/>
-
-      <!-- Lower unfolding -->
-      <polygon points="1440,1000 1440,1600 800,1300" fill="rgba(142,212,176,0.03)"/>
-      <polygon points="0,1200 600,1100 400,1500 0,1600" fill="rgba(232,127,95,0.02)"/>
-      <polygon points="500,1300 1200,1200 1000,1600 300,1700" fill="rgba(91,190,196,0.02)"/>
-
-      <!-- Bottom planes -->
-      <polygon points="0,1600 800,1500 600,1900 0,2000" fill="rgba(240,168,120,0.025)"/>
-      <polygon points="1440,1500 1440,2000 700,1800" fill="rgba(91,190,196,0.03)"/>
-      <polygon points="200,1900 1000,1800 1200,2200 400,2300" fill="rgba(142,212,176,0.02)"/>
-      <polygon points="0,2100 600,2000 300,2400 0,2500" fill="rgba(91,190,196,0.02)"/>
-      <polygon points="1440,2000 1440,2500 900,2300" fill="rgba(240,168,120,0.02)"/>
-
-      <!-- Faint crease lines -->
-      <line x1="0" y1="600" x2="1440" y2="400" stroke="rgba(91,190,196,0.04)" stroke-width="1"/>
-      <line x1="0" y1="1200" x2="1440" y2="1000" stroke="rgba(240,168,120,0.035)" stroke-width="1"/>
-      <line x1="400" y1="0" x2="200" y2="2800" stroke="rgba(142,212,176,0.025)" stroke-width="1"/>
-      <line x1="1100" y1="0" x2="1200" y2="2800" stroke="rgba(91,190,196,0.025)" stroke-width="1"/>
-      <line x1="0" y1="1900" x2="1440" y2="1700" stroke="rgba(142,212,176,0.03)" stroke-width="1"/>
+    <!-- Top-left teal fold -->
+    <svg class="origami-panel" style="top:0;left:0;width:55%;height:45%;" viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 800,0 500,500 0,400" fill="rgba(91,190,196,0.08)"/>
+      <polygon points="0,0 500,500 0,400" fill="rgba(91,190,196,0.05)"/>
+      <line x1="0" y1="0" x2="500" y2="500" stroke="rgba(91,190,196,0.06)" stroke-width="1"/>
+    </svg>
+    <!-- Top-right mint fold -->
+    <svg class="origami-panel" style="top:0;right:0;width:50%;height:35%;" viewBox="0 0 700 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="200,0 700,0 700,400" fill="rgba(142,212,176,0.07)"/>
+      <polygon points="700,0 700,400 400,300" fill="rgba(142,212,176,0.04)"/>
+      <line x1="200" y1="0" x2="700" y2="400" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
+    </svg>
+    <!-- Right peach fold -->
+    <svg class="origami-panel" style="top:25%;right:0;width:40%;height:35%;" viewBox="0 0 500 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="500,0 500,400 100,300" fill="rgba(240,168,120,0.07)"/>
+      <polygon points="500,0 300,200 500,400" fill="rgba(240,168,120,0.04)"/>
+      <line x1="500" y1="0" x2="100" y2="300" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
+    </svg>
+    <!-- Left mint mid-fold -->
+    <svg class="origami-panel" style="top:40%;left:0;width:45%;height:30%;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 400,50 300,350 0,350" fill="rgba(142,212,176,0.06)"/>
+      <polygon points="0,0 300,350 0,350" fill="rgba(142,212,176,0.04)"/>
+      <line x1="0" y1="0" x2="300" y2="350" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
+    </svg>
+    <!-- Central horizontal crease -->
+    <svg class="origami-panel" style="top:50%;left:0;width:100%;height:20%;" viewBox="0 0 1440 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,100 1440,0 1440,150 0,250" fill="rgba(240,168,120,0.04)"/>
+      <line x1="0" y1="125" x2="1440" y2="75" stroke="rgba(240,168,120,0.06)" stroke-width="1"/>
+    </svg>
+    <!-- Bottom-left peach fold -->
+    <svg class="origami-panel" style="bottom:10%;left:0;width:50%;height:30%;" viewBox="0 0 700 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 600,100 400,350 0,350" fill="rgba(240,168,120,0.06)"/>
+      <polygon points="0,0 400,350 0,350" fill="rgba(240,168,120,0.04)"/>
+      <line x1="0" y1="0" x2="400" y2="350" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
+    </svg>
+    <!-- Bottom-right teal fold -->
+    <svg class="origami-panel" style="bottom:5%;right:0;width:45%;height:30%;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="600,0 600,350 100,250" fill="rgba(91,190,196,0.07)"/>
+      <polygon points="600,0 400,200 600,350" fill="rgba(91,190,196,0.04)"/>
+      <line x1="600" y1="0" x2="100" y2="250" stroke="rgba(91,190,196,0.05)" stroke-width="1"/>
     </svg>
   </div>
 
@@ -114,7 +121,7 @@
         <img
           src="/images/kerigami-logo.png"
           alt="Kerigami — Origami brain logo in teal, mint, and peach"
-          class="w-64 h-auto sm:w-80 md:w-96"
+          class="w-48 h-auto sm:w-56 md:w-64"
           width="1186"
           height="1117"
           loading="eager"
