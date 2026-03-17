@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kerigami LLC — Family App Studio</title>
-  <meta name="description" content="Kerigami LLC builds family-friendly apps like Kids Chore Chart — an ADHD-friendly chore and reward tracker for families." />
+  <title>Kerigami LLC — Apps for the Neurodivergent Mind</title>
+  <meta name="description" content="Kerigami LLC celebrates the neurodivergent mind. Our first app, Kids Chore Chart, is an ADHD-friendly chore and reward tracker for families." />
   <link rel="icon" href="/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -12,60 +12,170 @@
       theme: {
         extend: {
           colors: {
-            brand: '#6D28D9',
-            'brand-light': '#8B5CF6',
+            teal:      { 400: '#5BBEC4', 500: '#4AA8AE', 600: '#3A929A' },
+            peach:     { 400: '#F0A878', 500: '#E8956E', 600: '#D8825A' },
+            tangerine: { 400: '#E87F5F', 500: '#D66A48', 600: '#C45A3A' },
+            mint:      { 400: '#8ED4B0', 500: '#72C89A' },
+            slate:     { 925: '#0F1419', 950: '#0A0E13' },
           },
         },
       },
     };
   </script>
+  <style>
+    /* Geometric origami fold accents */
+    .geo-grid {
+      background-image:
+        linear-gradient(rgba(91,190,196,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,190,196,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .fold-accent {
+      position: absolute;
+      border-style: solid;
+      border-color: transparent;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .fold-1 {
+      top: 120px; right: -40px;
+      border-width: 0 0 200px 200px;
+      border-bottom-color: #5BBEC4;
+    }
+    .fold-2 {
+      bottom: 200px; left: -30px;
+      border-width: 160px 160px 0 0;
+      border-top-color: #F0A878;
+    }
+    .fold-3 {
+      top: 50%; right: 10%;
+      border-width: 0 120px 120px 0;
+      border-right-color: #8ED4B0;
+      opacity: 0.04;
+    }
+    .fold-4 {
+      bottom: 15%; left: 15%;
+      border-width: 100px 0 0 100px;
+      border-top-color: #E87F5F;
+      opacity: 0.035;
+    }
+    /* Glow behind logo */
+    .logo-glow {
+      filter: drop-shadow(0 0 60px rgba(91,190,196,0.15)) drop-shadow(0 0 120px rgba(240,168,120,0.10));
+    }
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #5BBEC4 0%, #8ED4B0 40%, #F0A878 70%, #E87F5F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* Card hover border gradient */
+    .card-glow {
+      position: relative;
+    }
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 1rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(91,190,196,0.3), rgba(240,168,120,0.3));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card-glow:hover::before {
+      opacity: 1;
+    }
+  </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-950 text-gray-100 min-h-screen flex flex-col antialiased geo-grid overflow-x-hidden">
+
+  <!-- Geometric fold accents -->
+  <div class="fold-accent fold-1" aria-hidden="true"></div>
+  <div class="fold-accent fold-2" aria-hidden="true"></div>
+  <div class="fold-accent fold-3" aria-hidden="true"></div>
+  <div class="fold-accent fold-4" aria-hidden="true"></div>
 
   <!-- Header -->
-  <header class="border-b border-gray-800">
-    <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
-      <span class="text-2xl font-bold tracking-tight">Kerigami <span class="text-brand-light">LLC</span></span>
-      <nav class="flex items-center gap-6 text-sm">
-        <a href="#apps" class="text-gray-400 hover:text-white transition-colors">Apps</a>
-        <a href="#support" class="text-gray-400 hover:text-white transition-colors">Support</a>
+  <header class="relative z-10 border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <img src="/images/kerigami-logo.png" alt="Kerigami" class="w-8 h-8 object-contain" width="32" height="32" />
+        <span class="text-xl font-bold tracking-tight">Kerigami <span class="text-teal-400">LLC</span></span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="#mission" class="text-gray-400 hover:text-teal-400 transition-colors">Mission</a>
+        <a href="#apps" class="text-gray-400 hover:text-teal-400 transition-colors">Apps</a>
+        <a href="#support" class="text-gray-400 hover:text-teal-400 transition-colors">Support</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="max-w-5xl mx-auto px-6 py-24 text-center">
-    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-      Building tools families <span class="text-brand-light">actually use</span>.
+  <section class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-12 sm:pt-28 sm:pb-16 text-center">
+    <div class="flex justify-center mb-10">
+      <div class="logo-glow p-4">
+        <img
+          src="/images/kerigami-logo.png"
+          alt="Kerigami — Origami brain logo in teal, mint, and peach"
+          class="w-56 h-auto sm:w-72 md:w-80"
+          width="1186"
+          height="1117"
+          loading="eager"
+        />
+      </div>
+    </div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+      Apps for the <span class="gradient-text">neurodivergent mind</span>.
     </h1>
-    <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-      Kerigami LLC creates simple, delightful apps that help families stay organized, build great habits, and have fun doing it.
+    <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      Kerigami LLC builds focused, beautiful tools designed for how your brain actually works.
     </p>
   </section>
 
+  <!-- Mission -->
+  <section id="mission" class="relative z-10 max-w-4xl mx-auto px-6 pb-24">
+    <div class="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-8 sm:p-12">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-teal-400/80 mb-6">Our Mission</h2>
+      <p class="text-xl sm:text-2xl font-semibold leading-relaxed text-gray-200">
+        <span class="gradient-text">Kerigami</span> is born from two ideas:
+        <em class="text-peach-400">Kerygma</em> — a proclamation of good news — and
+        <em class="text-teal-400">Origami</em> — the art of transforming something simple into something extraordinary.
+      </p>
+      <p class="mt-6 text-gray-400 leading-relaxed text-lg">
+        We celebrate the intricate beauty of the neurodivergent mind. Every fold matters. Every brain is a masterpiece. Our apps are designed with ADHD families at the center — clear, rewarding, and built for focus.
+      </p>
+    </div>
+  </section>
+
   <!-- Apps -->
-  <section id="apps" class="max-w-5xl mx-auto px-6 pb-24">
-    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Our Apps</h2>
+  <section id="apps" class="relative z-10 max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-sm font-semibold uppercase tracking-widest text-teal-400/80 mb-8">Our Apps</h2>
 
     <!-- Kids Chore Chart Card -->
-    <div class="rounded-2xl border border-gray-800 bg-gray-900 p-8 sm:p-10 hover:border-brand/40 transition-colors">
+    <div class="card-glow rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 sm:p-10 transition-colors">
       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
-        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-brand/20 flex items-center justify-center">
-          <svg class="w-8 h-8 text-brand-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-teal-400/10 border border-teal-400/20 flex items-center justify-center">
+          <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
         <div class="flex-1">
           <h3 class="text-2xl font-bold">Kids Chore Chart</h3>
-          <p class="mt-2 text-gray-400 leading-relaxed">
-            A gamified chore and reward tracker designed for families. Kids Chore Chart helps parents and children manage daily tasks, earn XP, and redeem rewards together — with an ADHD-friendly interface built for focus and clarity.
+          <p class="mt-3 text-gray-400 leading-relaxed text-lg">
+            A gamified chore and reward tracker that helps families manage daily tasks together. Kids earn XP, redeem rewards, and track weekly stars — all through an ADHD-friendly interface designed for focus, clarity, and celebration.
           </p>
-          <div class="mt-5 flex flex-wrap gap-3 text-sm">
-            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Quests &amp; XP</span>
-            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Reward Store</span>
-            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Weekly Stars</span>
-            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">ADHD-Friendly</span>
-            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Family Friendly</span>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm">
+            <span class="px-3 py-1.5 rounded-full bg-teal-400/10 text-teal-400 border border-teal-400/20">Quests &amp; XP</span>
+            <span class="px-3 py-1.5 rounded-full bg-peach-400/10 text-peach-400 border border-peach-400/20">Reward Store</span>
+            <span class="px-3 py-1.5 rounded-full bg-mint-400/10 text-mint-400 border border-mint-400/20">Weekly Stars</span>
+            <span class="px-3 py-1.5 rounded-full bg-tangerine-400/10 text-tangerine-400 border border-tangerine-400/20">ADHD-Friendly</span>
+            <span class="px-3 py-1.5 rounded-full bg-teal-400/10 text-teal-400 border border-teal-400/20">Family Friendly</span>
           </div>
         </div>
       </div>
@@ -73,13 +183,13 @@
   </section>
 
   <!-- Support -->
-  <section id="support" class="max-w-5xl mx-auto px-6 pb-24">
-    <div class="rounded-2xl border border-gray-800 bg-gray-900 p-8 sm:p-10 text-center">
+  <section id="support" class="relative z-10 max-w-5xl mx-auto px-6 pb-24">
+    <div class="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 sm:p-10 text-center">
       <h2 class="text-xl font-bold mb-2">Support</h2>
       <p class="text-gray-400 mb-6 leading-relaxed">
         Have a question, need help with one of our apps, or want to report an issue? We're here to help.
       </p>
-      <a href="mailto:support@kerigami.com" class="inline-flex items-center gap-2 text-lg font-semibold text-brand-light hover:text-white transition-colors">
+      <a href="mailto:support@kerigami.com" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-teal-400/10 border border-teal-400/20 text-teal-400 font-semibold hover:bg-teal-400/20 transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
         </svg>
@@ -89,12 +199,12 @@
   </section>
 
   <!-- Footer -->
-  <footer class="mt-auto border-t border-gray-800">
+  <footer class="relative z-10 mt-auto border-t border-white/5">
     <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
       <span>&copy; 2026 Kerigami LLC</span>
       <div class="flex items-center gap-6">
-        <a href="/privacy.html" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
-        <a href="mailto:support@kerigami.com" class="hover:text-gray-300 transition-colors">support@kerigami.com</a>
+        <a href="/privacy.html" class="hover:text-teal-400 transition-colors">Privacy Policy</a>
+        <a href="mailto:support@kerigami.com" class="hover:text-teal-400 transition-colors">Support</a>
       </div>
     </div>
   </footer>
