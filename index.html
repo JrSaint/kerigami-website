@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerigami LLC</title>
+  <meta name="description" content="Kerigami LLC — maker of Kids Chore Chart and family productivity tools." />
+  <link rel="icon" href="/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#6D28D9',
+            'brand-light': '#8B5CF6',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="border-b border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <span class="text-2xl font-bold tracking-tight">Kerigami <span class="text-brand-light">LLC</span></span>
+      <a href="mailto:contact@kerigami.com" class="text-sm text-gray-400 hover:text-white transition-colors">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 py-24 text-center">
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+      Building tools families <span class="text-brand-light">actually use</span>.
+    </h1>
+    <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
+      Kerigami LLC creates simple, delightful apps that help families stay organized and have fun doing it.
+    </p>
+  </section>
+
+  <!-- Products -->
+  <section class="max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Our Products</h2>
+
+    <!-- Kids Chore Chart Card -->
+    <div class="rounded-2xl border border-gray-800 bg-gray-900 p-8 sm:p-10 hover:border-brand/40 transition-colors">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-brand/20 flex items-center justify-center">
+          <svg class="w-8 h-8 text-brand-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold">Kids Chore Chart</h3>
+          <p class="mt-2 text-gray-400 leading-relaxed">
+            A gamified chore-tracking app that turns everyday tasks into quests. Kids earn XP, unlock rewards, and build streaks — while parents keep the household running smoothly.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Quests &amp; XP</span>
+        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Reward Store</span>
+        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Weekly Stars</span>
+        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Family Friendly</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="max-w-5xl mx-auto px-6 pb-24 text-center">
+    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Get in Touch</h2>
+    <a href="mailto:contact@kerigami.com" class="text-xl font-semibold text-brand-light hover:text-white transition-colors">
+      contact@kerigami.com
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 py-6 text-center text-sm text-gray-500">
+      &copy; 2026 Kerigami LLC. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
