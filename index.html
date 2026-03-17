@@ -26,39 +26,17 @@
     };
   </script>
   <style>
-    /* Subtle origami fold accents — light triangles */
-    .fold-accent {
-      position: absolute;
-      border-style: solid;
-      border-color: transparent;
+    /* Origami unfolding background — layered geometric planes */
+    .origami-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
       pointer-events: none;
+      overflow: hidden;
     }
-    .fold-1 {
-      top: 0; right: 0;
-      border-width: 0 180px 180px 0;
-      border-right-color: rgba(91,190,196,0.07);
-    }
-    .fold-2 {
-      bottom: 0; left: 0;
-      border-width: 140px 0 0 140px;
-      border-left-color: rgba(240,168,120,0.06);
-    }
-    .fold-3 {
-      top: 40%; right: 0;
-      border-width: 100px 100px 0 0;
-      border-top-color: rgba(142,212,176,0.05);
-    }
-    .fold-4 {
-      bottom: 30%; left: 0;
-      border-width: 0 0 120px 120px;
-      border-bottom-color: rgba(232,127,95,0.04);
-    }
-    /* Subtle crease lines */
-    .crease-grid {
-      background-image:
-        linear-gradient(135deg, rgba(91,190,196,0.03) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(240,168,120,0.02) 25%, transparent 25%);
-      background-size: 80px 80px;
+    .origami-bg svg {
+      width: 100%;
+      height: 100%;
     }
     /* Gradient text matching logo palette */
     .gradient-text {
@@ -74,13 +52,45 @@
     }
   </style>
 </head>
-<body class="bg-paper-50 text-gray-900 min-h-screen flex flex-col antialiased crease-grid overflow-x-hidden">
+<body class="bg-paper-50 text-gray-900 min-h-screen flex flex-col antialiased overflow-x-hidden">
 
-  <!-- Geometric fold accents -->
-  <div class="fold-accent fold-1" aria-hidden="true"></div>
-  <div class="fold-accent fold-2" aria-hidden="true"></div>
-  <div class="fold-accent fold-3" aria-hidden="true"></div>
-  <div class="fold-accent fold-4" aria-hidden="true"></div>
+  <!-- Origami geometric background — soft unfolding planes -->
+  <div class="origami-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 2800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Large slow-unfolding panels -->
+      <polygon points="0,0 720,0 400,500" fill="rgba(91,190,196,0.035)"/>
+      <polygon points="720,0 1440,0 1440,400 600,350" fill="rgba(142,212,176,0.025)"/>
+      <polygon points="0,0 400,500 0,600" fill="rgba(91,190,196,0.02)"/>
+
+      <!-- Mid-page folds -->
+      <polygon points="1440,300 1440,900 900,600" fill="rgba(240,168,120,0.03)"/>
+      <polygon points="0,500 500,700 200,1000 0,900" fill="rgba(142,212,176,0.03)"/>
+      <polygon points="600,400 1100,500 800,800" fill="rgba(91,190,196,0.02)"/>
+
+      <!-- Central origami crease -->
+      <polygon points="0,900 1440,700 1440,1100 0,1300" fill="rgba(240,168,120,0.02)"/>
+      <polygon points="300,800 900,750 700,1100 100,1100" fill="rgba(91,190,196,0.025)"/>
+
+      <!-- Lower unfolding -->
+      <polygon points="1440,1000 1440,1600 800,1300" fill="rgba(142,212,176,0.03)"/>
+      <polygon points="0,1200 600,1100 400,1500 0,1600" fill="rgba(232,127,95,0.02)"/>
+      <polygon points="500,1300 1200,1200 1000,1600 300,1700" fill="rgba(91,190,196,0.02)"/>
+
+      <!-- Bottom planes -->
+      <polygon points="0,1600 800,1500 600,1900 0,2000" fill="rgba(240,168,120,0.025)"/>
+      <polygon points="1440,1500 1440,2000 700,1800" fill="rgba(91,190,196,0.03)"/>
+      <polygon points="200,1900 1000,1800 1200,2200 400,2300" fill="rgba(142,212,176,0.02)"/>
+      <polygon points="0,2100 600,2000 300,2400 0,2500" fill="rgba(91,190,196,0.02)"/>
+      <polygon points="1440,2000 1440,2500 900,2300" fill="rgba(240,168,120,0.02)"/>
+
+      <!-- Faint crease lines -->
+      <line x1="0" y1="600" x2="1440" y2="400" stroke="rgba(91,190,196,0.04)" stroke-width="1"/>
+      <line x1="0" y1="1200" x2="1440" y2="1000" stroke="rgba(240,168,120,0.035)" stroke-width="1"/>
+      <line x1="400" y1="0" x2="200" y2="2800" stroke="rgba(142,212,176,0.025)" stroke-width="1"/>
+      <line x1="1100" y1="0" x2="1200" y2="2800" stroke="rgba(91,190,196,0.025)" stroke-width="1"/>
+      <line x1="0" y1="1900" x2="1440" y2="1700" stroke="rgba(142,212,176,0.03)" stroke-width="1"/>
+    </svg>
+  </div>
 
   <!-- Header -->
   <header class="relative z-10 border-b border-gray-200/60">
