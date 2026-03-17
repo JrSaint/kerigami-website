@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kerigami LLC</title>
-  <meta name="description" content="Kerigami LLC — maker of Kids Chore Chart and family productivity tools." />
+  <title>Kerigami LLC — Family App Studio</title>
+  <meta name="description" content="Kerigami LLC builds family-friendly apps like Kids Chore Chart — an ADHD-friendly chore and reward tracker for families." />
   <link rel="icon" href="/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,13 +20,16 @@
     };
   </script>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col antialiased">
 
   <!-- Header -->
   <header class="border-b border-gray-800">
     <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
       <span class="text-2xl font-bold tracking-tight">Kerigami <span class="text-brand-light">LLC</span></span>
-      <a href="mailto:contact@kerigami.com" class="text-sm text-gray-400 hover:text-white transition-colors">Contact Us</a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="#apps" class="text-gray-400 hover:text-white transition-colors">Apps</a>
+        <a href="#support" class="text-gray-400 hover:text-white transition-colors">Support</a>
+      </nav>
     </div>
   </header>
 
@@ -35,18 +38,18 @@
     <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
       Building tools families <span class="text-brand-light">actually use</span>.
     </h1>
-    <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
-      Kerigami LLC creates simple, delightful apps that help families stay organized and have fun doing it.
+    <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      Kerigami LLC creates simple, delightful apps that help families stay organized, build great habits, and have fun doing it.
     </p>
   </section>
 
-  <!-- Products -->
-  <section class="max-w-5xl mx-auto px-6 pb-24">
-    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Our Products</h2>
+  <!-- Apps -->
+  <section id="apps" class="max-w-5xl mx-auto px-6 pb-24">
+    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-8">Our Apps</h2>
 
     <!-- Kids Chore Chart Card -->
     <div class="rounded-2xl border border-gray-800 bg-gray-900 p-8 sm:p-10 hover:border-brand/40 transition-colors">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+      <div class="flex flex-col sm:flex-row sm:items-start gap-6">
         <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-brand/20 flex items-center justify-center">
           <svg class="w-8 h-8 text-brand-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -55,31 +58,41 @@
         <div class="flex-1">
           <h3 class="text-2xl font-bold">Kids Chore Chart</h3>
           <p class="mt-2 text-gray-400 leading-relaxed">
-            A gamified chore-tracking app that turns everyday tasks into quests. Kids earn XP, unlock rewards, and build streaks — while parents keep the household running smoothly.
+            A gamified chore and reward tracker designed for families. Kids Chore Chart helps parents and children manage daily tasks, earn XP, and redeem rewards together — with an ADHD-friendly interface built for focus and clarity.
           </p>
+          <div class="mt-5 flex flex-wrap gap-3 text-sm">
+            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Quests &amp; XP</span>
+            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Reward Store</span>
+            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Weekly Stars</span>
+            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">ADHD-Friendly</span>
+            <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Family Friendly</span>
+          </div>
         </div>
-      </div>
-      <div class="mt-6 flex flex-wrap gap-3 text-sm">
-        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Quests &amp; XP</span>
-        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Reward Store</span>
-        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Weekly Stars</span>
-        <span class="px-3 py-1 rounded-full bg-brand/10 text-brand-light">Family Friendly</span>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="max-w-5xl mx-auto px-6 pb-24 text-center">
-    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Get in Touch</h2>
-    <a href="mailto:contact@kerigami.com" class="text-xl font-semibold text-brand-light hover:text-white transition-colors">
-      contact@kerigami.com
-    </a>
+  <!-- Support -->
+  <section id="support" class="max-w-5xl mx-auto px-6 pb-24">
+    <div class="rounded-2xl border border-gray-800 bg-gray-900 p-8 sm:p-10 text-center">
+      <h2 class="text-xl font-bold mb-2">Support</h2>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        Have a question, need help with one of our apps, or want to report an issue? We're here to help.
+      </p>
+      <a href="mailto:support@kerigami.com" class="inline-flex items-center gap-2 text-lg font-semibold text-brand-light hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        support@kerigami.com
+      </a>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="mt-auto border-t border-gray-800">
-    <div class="max-w-5xl mx-auto px-6 py-6 text-center text-sm text-gray-500">
-      &copy; 2026 Kerigami LLC. All rights reserved.
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <span>&copy; 2026 Kerigami LLC</span>
+      <a href="mailto:support@kerigami.com" class="hover:text-gray-300 transition-colors">support@kerigami.com</a>
     </div>
   </footer>
 
