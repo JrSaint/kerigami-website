@@ -39,38 +39,68 @@
       pointer-events: none;
       transform-origin: var(--fold-hinge, left);
       perspective: 800px;
-      animation: var(--fold-anim, fold-left) var(--fold-dur, 8s) ease-in-out infinite;
+      animation:
+        var(--fold-anim, fold-left) var(--fold-dur, 20s) ease-in-out infinite,
+        drift var(--drift-dur, 25s) ease-in-out infinite;
       animation-delay: var(--fold-delay, 0s);
     }
-    /* Fold from left edge */
+    /* Multi-stage fold from left — longer journey */
     @keyframes fold-left {
-      0%, 100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
-      50% { transform: perspective(800px) rotateY(-35deg); opacity: 0.6; }
+      0%   { transform: perspective(800px) rotateY(0deg) scale(1);     opacity: 1; }
+      20%  { transform: perspective(800px) rotateY(-20deg) scale(1.03); opacity: 0.85; }
+      40%  { transform: perspective(800px) rotateY(-8deg) scale(1.06);  opacity: 0.95; }
+      60%  { transform: perspective(800px) rotateY(-35deg) scale(0.97); opacity: 0.6; }
+      80%  { transform: perspective(800px) rotateY(-12deg) scale(1.02); opacity: 0.9; }
+      100% { transform: perspective(800px) rotateY(0deg) scale(1);     opacity: 1; }
     }
-    /* Fold from right edge */
+    /* Multi-stage fold from right */
     @keyframes fold-right {
-      0%, 100% { transform: perspective(800px) rotateY(0deg); opacity: 1; }
-      50% { transform: perspective(800px) rotateY(35deg); opacity: 0.6; }
+      0%   { transform: perspective(800px) rotateY(0deg) scale(1);     opacity: 1; }
+      25%  { transform: perspective(800px) rotateY(25deg) scale(1.04);  opacity: 0.8; }
+      50%  { transform: perspective(800px) rotateY(10deg) scale(0.96);  opacity: 0.9; }
+      75%  { transform: perspective(800px) rotateY(35deg) scale(1.02);  opacity: 0.6; }
+      100% { transform: perspective(800px) rotateY(0deg) scale(1);     opacity: 1; }
     }
-    /* Fold from top edge */
+    /* Multi-stage fold from top */
     @keyframes fold-top {
-      0%, 100% { transform: perspective(800px) rotateX(0deg); opacity: 1; }
-      50% { transform: perspective(800px) rotateX(30deg); opacity: 0.6; }
+      0%   { transform: perspective(800px) rotateX(0deg) scale(1);     opacity: 1; }
+      30%  { transform: perspective(800px) rotateX(20deg) scale(1.05);  opacity: 0.8; }
+      60%  { transform: perspective(800px) rotateX(5deg) scale(0.97);   opacity: 0.95; }
+      80%  { transform: perspective(800px) rotateX(30deg) scale(1.01);  opacity: 0.6; }
+      100% { transform: perspective(800px) rotateX(0deg) scale(1);     opacity: 1; }
     }
-    /* Fold from bottom edge */
+    /* Multi-stage fold from bottom */
     @keyframes fold-bottom {
-      0%, 100% { transform: perspective(800px) rotateX(0deg); opacity: 1; }
-      50% { transform: perspective(800px) rotateX(-30deg); opacity: 0.6; }
+      0%   { transform: perspective(800px) rotateX(0deg) scale(1);     opacity: 1; }
+      35%  { transform: perspective(800px) rotateX(-25deg) scale(1.04); opacity: 0.75; }
+      65%  { transform: perspective(800px) rotateX(-8deg) scale(0.98);  opacity: 0.9; }
+      85%  { transform: perspective(800px) rotateX(-30deg) scale(1.02); opacity: 0.6; }
+      100% { transform: perspective(800px) rotateX(0deg) scale(1);     opacity: 1; }
     }
-    /* Diagonal fold */
+    /* Diagonal fold — multi-stage */
     @keyframes fold-corner {
-      0%, 100% { transform: perspective(800px) rotate3d(1,1,0, 0deg); opacity: 1; }
-      50% { transform: perspective(800px) rotate3d(1,1,0, 25deg); opacity: 0.5; }
+      0%   { transform: perspective(800px) rotate3d(1,1,0,0deg) scale(1);    opacity: 1; }
+      25%  { transform: perspective(800px) rotate3d(1,1,0,15deg) scale(1.05); opacity: 0.8; }
+      50%  { transform: perspective(800px) rotate3d(1,0.5,0,25deg) scale(0.96); opacity: 0.55; }
+      75%  { transform: perspective(800px) rotate3d(0.5,1,0,10deg) scale(1.03); opacity: 0.85; }
+      100% { transform: perspective(800px) rotate3d(1,1,0,0deg) scale(1);    opacity: 1; }
     }
-    /* Animated gradient text matching logo palette */
+    /* Gentle positional drift for organic feel */
+    @keyframes drift {
+      0%   { translate: 0 0; }
+      25%  { translate: 1.5% -1%; }
+      50%  { translate: -1% 1.5%; }
+      75%  { translate: 1% 0.5%; }
+      100% { translate: 0 0; }
+    }
+    /* Animated gradient text — seamless loop with tight color bands */
     .gradient-text {
-      background: linear-gradient(90deg, #5BBEC4, #72C89A, #8ED4B0, #D4B896, #E8A07A, #D4B896, #8ED4B0, #72C89A, #5BBEC4);
-      background-size: 400% 100%;
+      background: linear-gradient(90deg,
+        #5BBEC4, #4AA8AE, #5BBEC4, #72C89A, #8ED4B0, #D4B896, #E8A07A, #D8825A, #E8A07A, #D4B896, #8ED4B0, #72C89A,
+        #5BBEC4, #4AA8AE, #5BBEC4, #72C89A, #8ED4B0, #D4B896, #E8A07A, #D8825A, #E8A07A, #D4B896, #8ED4B0, #72C89A,
+        #5BBEC4
+      );
+      background-size: 200% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -85,49 +115,59 @@
       letter-spacing: 0.15em;
       font-weight: 800;
     }
+    /* Mobile hamburger menu */
+    .mobile-menu-btn { display: none !important; }
+    .mobile-menu { display: none !important; }
+    @media (max-width: 639px) {
+      .desktop-nav { display: none !important; }
+      .mobile-menu-btn { display: flex !important; }
+      .mobile-menu.open {
+        display: flex !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-paper-50 text-gray-900 min-h-screen flex flex-col antialiased overflow-x-hidden">
 
-  <!-- Origami geometric background — unfolding planes -->
+  <!-- Origami geometric background — unfolding planes with drift -->
   <div class="origami-bg" aria-hidden="true">
     <!-- Top-left teal — folds open from left edge -->
-    <svg class="origami-panel" style="top:0;left:0;width:55%;height:45%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:8s;--fold-delay:0s;" viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="top:0;left:0;width:55%;height:45%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:20s;--drift-dur:28s;--fold-delay:0s;" viewBox="0 0 800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 800,0 500,500 0,400" fill="rgba(91,190,196,0.08)"/>
       <polygon points="0,0 500,500 0,400" fill="rgba(91,190,196,0.05)"/>
       <line x1="0" y1="0" x2="500" y2="500" stroke="rgba(91,190,196,0.06)" stroke-width="1"/>
     </svg>
     <!-- Top-right mint — folds open from right edge -->
-    <svg class="origami-panel" style="top:0;right:0;width:50%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:9.5s;--fold-delay:-2s;" viewBox="0 0 700 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="top:0;right:0;width:50%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:24s;--drift-dur:30s;--fold-delay:-4s;" viewBox="0 0 700 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="200,0 700,0 700,400" fill="rgba(142,212,176,0.07)"/>
       <polygon points="700,0 700,400 400,300" fill="rgba(142,212,176,0.04)"/>
       <line x1="200" y1="0" x2="700" y2="400" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
     </svg>
     <!-- Right peach — folds open from right edge -->
-    <svg class="origami-panel" style="top:25%;right:0;width:40%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:10s;--fold-delay:-5s;" viewBox="0 0 500 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="top:25%;right:0;width:40%;height:35%;--fold-hinge:right;--fold-anim:fold-right;--fold-dur:22s;--drift-dur:32s;--fold-delay:-8s;" viewBox="0 0 500 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="500,0 500,400 100,300" fill="rgba(240,168,120,0.07)"/>
       <polygon points="500,0 300,200 500,400" fill="rgba(240,168,120,0.04)"/>
       <line x1="500" y1="0" x2="100" y2="300" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
     </svg>
     <!-- Left mint mid — folds open from left edge -->
-    <svg class="origami-panel" style="top:40%;left:0;width:45%;height:30%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:8.5s;--fold-delay:-3s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="top:40%;left:0;width:45%;height:30%;--fold-hinge:left;--fold-anim:fold-left;--fold-dur:26s;--drift-dur:22s;--fold-delay:-6s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 400,50 300,350 0,350" fill="rgba(142,212,176,0.06)"/>
       <polygon points="0,0 300,350 0,350" fill="rgba(142,212,176,0.04)"/>
       <line x1="0" y1="0" x2="300" y2="350" stroke="rgba(142,212,176,0.05)" stroke-width="1"/>
     </svg>
     <!-- Central horizontal crease — folds from top edge -->
-    <svg class="origami-panel" style="top:50%;left:0;width:100%;height:20%;--fold-hinge:top;--fold-anim:fold-top;--fold-dur:11s;--fold-delay:-4s;" viewBox="0 0 1440 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="top:50%;left:0;width:100%;height:20%;--fold-hinge:top;--fold-anim:fold-top;--fold-dur:28s;--drift-dur:35s;--fold-delay:-10s;" viewBox="0 0 1440 250" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,100 1440,0 1440,150 0,250" fill="rgba(240,168,120,0.04)"/>
       <line x1="0" y1="125" x2="1440" y2="75" stroke="rgba(240,168,120,0.06)" stroke-width="1"/>
     </svg>
     <!-- Bottom-left peach — diagonal corner fold -->
-    <svg class="origami-panel" style="bottom:10%;left:0;width:50%;height:30%;--fold-hinge:bottom left;--fold-anim:fold-corner;--fold-dur:9s;--fold-delay:-6s;" viewBox="0 0 700 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="bottom:10%;left:0;width:50%;height:30%;--fold-hinge:bottom left;--fold-anim:fold-corner;--fold-dur:24s;--drift-dur:26s;--fold-delay:-14s;" viewBox="0 0 700 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="0,0 600,100 400,350 0,350" fill="rgba(240,168,120,0.06)"/>
       <polygon points="0,0 400,350 0,350" fill="rgba(240,168,120,0.04)"/>
       <line x1="0" y1="0" x2="400" y2="350" stroke="rgba(240,168,120,0.05)" stroke-width="1"/>
     </svg>
     <!-- Bottom-right teal — folds from bottom edge -->
-    <svg class="origami-panel" style="bottom:5%;right:0;width:45%;height:30%;--fold-hinge:bottom;--fold-anim:fold-bottom;--fold-dur:7.5s;--fold-delay:-1s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="origami-panel" style="bottom:5%;right:0;width:45%;height:30%;--fold-hinge:bottom;--fold-anim:fold-bottom;--fold-dur:21s;--drift-dur:29s;--fold-delay:-3s;" viewBox="0 0 600 350" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="600,0 600,350 100,250" fill="rgba(91,190,196,0.07)"/>
       <polygon points="600,0 400,200 600,350" fill="rgba(91,190,196,0.04)"/>
       <line x1="600" y1="0" x2="100" y2="250" stroke="rgba(91,190,196,0.05)" stroke-width="1"/>
@@ -140,12 +180,25 @@
       <a href="/" class="flex items-center">
         <img src="/images/kerigami-logo-horizontal.png" alt="Kerigami" class="h-9 w-auto object-contain" width="2469" height="601" />
       </a>
-      <nav class="flex items-center gap-6 text-sm font-medium">
+      <!-- Desktop nav -->
+      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
         <a href="#mission" class="text-gray-500 hover:text-teal-600 transition-colors">Mission</a>
         <a href="#apps" class="text-gray-500 hover:text-teal-600 transition-colors">Apps</a>
         <a href="#support" class="text-gray-500 hover:text-teal-600 transition-colors">Support</a>
       </nav>
+      <!-- Mobile hamburger button -->
+      <button class="mobile-menu-btn items-center justify-center w-10 h-10 rounded-lg text-gray-500 hover:text-teal-600 hover:bg-teal-50 transition-colors" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
+    <!-- Mobile dropdown menu -->
+    <nav id="mobileMenu" class="mobile-menu flex-col border-t border-gray-200/60 bg-white/95 backdrop-blur-sm">
+      <a href="#mission" class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-teal-600 hover:bg-teal-50/50 transition-colors" onclick="document.getElementById('mobileMenu').classList.remove('open')">Mission</a>
+      <a href="#apps" class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-teal-600 hover:bg-teal-50/50 transition-colors" onclick="document.getElementById('mobileMenu').classList.remove('open')">Apps</a>
+      <a href="#support" class="px-6 py-3 text-sm font-medium text-gray-500 hover:text-teal-600 hover:bg-teal-50/50 transition-colors border-b border-gray-200/60" onclick="document.getElementById('mobileMenu').classList.remove('open')">Support</a>
+    </nav>
   </header>
 
   <!-- Hero -->
@@ -162,10 +215,11 @@
         />
       </div>
     </div>
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-900">
-      Apps for the <span class="gradient-text">neurodivergent mind</span>.
+    <h1 class="tracking-tight leading-tight text-gray-900">
+      <span class="block text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-500 mb-1">apps for the</span>
+      <span class="gradient-text text-3xl sm:text-5xl lg:text-6xl font-extrabold sm:whitespace-nowrap">Neurodivergent Mind</span>
     </h1>
-    <p class="mt-6 text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+    <p class="mt-6 text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed text-left">
       Kerigami LLC builds focused, beautiful tools designed for how your brain actually works.
     </p>
   </section>
@@ -192,13 +246,11 @@
     <!-- Kids Chore Chart Card -->
     <div class="rounded-2xl bg-white border border-gray-200/80 shadow-sm p-8 sm:p-10 hover:shadow-md hover:border-teal-200 transition-all duration-300">
       <div class="flex flex-col sm:flex-row sm:items-start gap-6">
-        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center">
-          <svg class="w-7 h-7 text-teal-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-        </div>
+        <a href="https://kidschorechart.app" class="flex-shrink-0 w-14 h-14">
+          <img src="/images/Icon.png" alt="Kids Chore Chart icon" class="w-14 h-14 object-contain" width="1024" height="1024" />
+        </a>
         <div class="flex-1">
-          <h3 class="text-2xl font-bold text-gray-900">Kids Chore Chart</h3>
+          <h3 class="text-2xl font-bold text-gray-900"><a href="https://kidschorechart.app" class="hover:text-teal-600 transition-colors">Kids Chore Chart</a></h3>
           <p class="mt-3 text-gray-500 leading-relaxed text-lg">
             A gamified chore and reward tracker that helps families manage daily tasks together. Kids earn XP, redeem rewards, and track weekly stars &mdash; all through an ADHD-friendly interface designed for focus, clarity, and celebration.
           </p>
