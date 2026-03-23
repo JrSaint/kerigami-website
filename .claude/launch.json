@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kerigami-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/Junior/Desktop/kerigami-website", "-l", "3456"],
+      "port": 3456
+    }
+  ]
+}
