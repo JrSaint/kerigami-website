@@ -4,7 +4,7 @@
     {
       "name": "kerigami-site",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "/Users/Junior/Desktop/kerigami-website", "-l", "3456"],
+      "runtimeArgs": ["serve", "/Users/Junior/Desktop/Claude Projects MBP/kerigami-website", "-l", "3456"],
       "port": 3456
     }
   ]
