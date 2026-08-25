@@ -1,0 +1,5 @@
+# Claude Code dispatch run logs — local only, never publish
+.cc-runs/
+
+# macOS clutter
+.DS_Store
