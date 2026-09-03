@@ -193,24 +193,7 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             Baixar a folha (PDF)
           </a>
-          <p class="freehint">Grátis, sem cadastro. É só baixar, imprimir e usar.</p>
-
-          <!-- Optional, ungated: stay-in-touch. Never blocks the download. -->
-          <form id="guiaForm" class="optin" novalidate>
-            <p class="optin-q">Quer que eu te avise quando sair uma folha nova? <span class="opt">(opcional)</span></p>
-            <div class="optin-row">
-              <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
-                     placeholder="seu e-mail" aria-label="Seu e-mail (opcional)" />
-              <button class="btn2" type="submit">Me avisa</button>
-            </div>
-            <p class="err" id="err">Confere o e-mail?</p>
-            <p class="okmsg" id="ok">Valeu! Te aviso quando sair novidade. &#128153;</p>
-            <p class="lgpd">
-              Uso seu e-mail só pra avisar de folhas novas e novidades da Kerigami. Sem spam.
-              Você pode sair ou apagar seus dados quando quiser em
-              <a href="mailto:support@kerigami.com">support@kerigami.com</a>.
-            </p>
-          </form>
+          <p class="freehint">Grátis, sem cadastro, sem pegadinha. É só baixar, imprimir e usar.</p>
 
           <!-- Second moment: revealed lightly after the download starts. -->
           <p class="appshint" id="appsHint" hidden>
@@ -281,7 +264,7 @@
       <div class="card">
         <p>Durante muito tempo eu achei que a minha cabeça vagando no meio da pregação era falta de fé ou desrespeito. Não era. É só o jeito que alguns cérebros funcionam &mdash; e com a estrutura certa, tudo muda. Foi por isso que criei essa folha: pra transformar a distração em presença.</p>
         <p class="bridge">É a mesma convicção que me faz construir ferramentas pra famílias com TDAH na Kerigami. <a href="https://kerigami.com/pt/" data-apps-link>Conhecer a Kerigami &rarr;</a></p>
-        <p class="sig">&mdash; Welbr, da Kerigami</p>
+        <p class="sig">&mdash; Welbr &amp; Erika, da Kerigami</p>
       </div>
     </div>
   </section>
@@ -326,42 +309,7 @@
 
       track("view");
 
-      var form = document.getElementById("guiaForm");
-      var emailEl = document.getElementById("email");
-      var errEl = document.getElementById("err");
-      var okEl = document.getElementById("ok");
       var appsHint = document.getElementById("appsHint");
-      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      // The download is NEVER gated. This form is a purely optional "notify me".
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = (emailEl.value || "").trim().toLowerCase();
-        if (!email) { emailEl.focus(); return; }   // empty: they skipped it — do nothing
-        if (!EMAIL_RE.test(email)) {
-          errEl.classList.add("show");
-          emailEl.focus();
-          return;
-        }
-        errEl.classList.remove("show");
-        track("submit");
-
-        // Best-effort list capture. 201 (new) and 409 (already on the list) are
-        // both fine; any failure is swallowed. Nothing here blocks anything.
-        try {
-          fetch(SUPA_URL + "/rest/v1/guia_leads", {
-            method: "POST", keepalive: true,
-            headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY,
-                       "Content-Type": "application/json", "Prefer": "return=minimal" },
-            body: JSON.stringify({ email: email, campaign: campaign, consent: true })
-          }).catch(function () {});
-        } catch (e) {}
-
-        // Quietly swap the little form row for a thank-you.
-        document.querySelector(".optin-q").style.display = "none";
-        document.querySelector(".optin-row").style.display = "none";
-        okEl.classList.add("show");
-      });
 
       document.getElementById("downloadBtn").addEventListener("click", function () {
         track("download");
