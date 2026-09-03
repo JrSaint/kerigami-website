@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Folha de anotações da mensagem para TDAH — Kerigami</title>
+  <meta name="description" content="Uma folha grátis pra anotar a pregação do jeito que um cérebro com TDAH precisa: espaço pra rabiscar, palavras-chave, passos práticos e um lugar pra oração. Baixe e imprima." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Kerigami LLC" />
+  <link rel="canonical" href="https://kerigami.com/guia" />
+  <link rel="icon" href="/brain-logo.webp" type="image/webp" />
+
+  <!-- Open Graph / share preview (Instagram bio, WhatsApp, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kerigami.com/guia" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Kerigami" />
+  <meta property="og:title" content="A folha de anotações da mensagem, feita pra quem tem TDAH" />
+  <meta property="og:description" content="Espaço pra rabiscar, palavras-chave, passos práticos e um lugar pra oração. Grátis pra baixar e imprimir." />
+  <meta property="og:image" content="https://kerigami.com/guia/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A folha de anotações da mensagem, feita pra quem tem TDAH" />
+  <meta name="twitter:description" content="Espaço pra rabiscar, palavras-chave, passos práticos e um lugar pra oração. Grátis pra baixar e imprimir." />
+  <meta name="twitter:image" content="https://kerigami.com/guia/og.jpg" />
+
+  <style>
+    *{ box-sizing: border-box; }
+    :root{
+      --ink:#1f2937; --muted:#6b7280; --soft:#9ca3af;
+      --teal:#2d7a82; --teal-600:#3a929a; --teal-500:#4aa8ae; --teal-400:#5bbec4;
+      --mint:#72c89a; --peach:#e8956e; --paper:#fefefe;
+      --line:rgba(176,235,200,0.55);
+    }
+    html{ -webkit-text-size-adjust:100%; }
+    body{
+      margin:0; color:var(--ink); background:var(--paper);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      -webkit-font-smoothing:antialiased; line-height:1.6;
+    }
+    a{ color:var(--teal-600); }
+    img{ max-width:100%; display:block; }
+    .wrap{ width:100%; max-width:640px; margin:0 auto; padding:0 20px; }
+
+    /* ---- Hero ---- */
+    .hero{
+      position:relative;
+      background:linear-gradient(165deg,#edfafa 0%,#fefefe 42%,#fff5ed 100%);
+      border-bottom:1px solid rgba(0,0,0,0.04);
+      padding:22px 0 34px;
+    }
+    .brandbar{ display:flex; align-items:center; gap:9px; margin-bottom:22px; }
+    .brandbar img{ width:30px; height:30px; }
+    .brandbar span{ font-weight:700; letter-spacing:.14em; font-size:.82rem; color:var(--teal); }
+    h1{
+      margin:0 0 12px; font-size:1.72rem; line-height:1.2; font-weight:800;
+      letter-spacing:-.01em; color:#111827;
+    }
+    h1 .hl{ color:var(--teal); }
+    .sub{ margin:0 0 22px; font-size:1.06rem; color:var(--muted); }
+    .sub .em{ color:var(--ink); font-weight:600; }
+
+    /* ---- Form card ---- */
+    .capture{
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      box-shadow:0 16px 44px rgba(142,212,176,0.22),0 6px 16px rgba(0,0,0,0.06);
+      padding:20px 18px; position:relative; overflow:hidden;
+    }
+    .capture::before{
+      content:""; position:absolute; top:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg,var(--teal-400),var(--mint),var(--peach),#d8825a);
+    }
+    .capture label{ display:block; font-weight:600; font-size:.95rem; margin:2px 0 8px; }
+    .capture input[type=email]{
+      width:100%; padding:14px 15px; font-size:16px; /* 16px stops iOS zoom */
+      border:1.5px solid #e5e7eb; border-radius:12px; background:#fcfcfb; color:var(--ink);
+      transition:border-color .15s, box-shadow .15s;
+    }
+    .capture input[type=email]:focus{
+      outline:none; border-color:var(--teal-400);
+      box-shadow:0 0 0 3px rgba(91,190,196,0.18);
+    }
+    .btn{
+      display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+      margin-top:12px; padding:15px 18px; border:0; border-radius:12px; cursor:pointer;
+      font-family:inherit; font-size:1.08rem; font-weight:700; color:#fff;
+      background:linear-gradient(135deg,var(--teal-500),var(--teal-600));
+      box-shadow:0 8px 20px rgba(58,146,154,0.28); transition:transform .15s, box-shadow .15s;
+    }
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 12px 26px rgba(58,146,154,0.34); }
+    .btn:active{ transform:translateY(0); }
+    .err{ display:none; margin:8px 2px 0; color:#c0492f; font-size:.85rem; }
+    .err.show{ display:block; }
+    .lgpd{ margin:12px 2px 0; font-size:.78rem; line-height:1.5; color:var(--soft); }
+    .lgpd a{ color:var(--soft); text-decoration:underline; }
+
+    .btn svg{ flex:0 0 auto; }
+    /* ---- Free hint under the primary download ---- */
+    .freehint{ text-align:center; margin:10px 2px 0; font-size:.82rem; color:var(--soft); }
+
+    /* ---- Optional opt-in (never gates the download) ---- */
+    .optin{ margin-top:18px; padding-top:16px; border-top:1px solid #f0f1ef; }
+    .optin-q{ margin:0 0 9px; font-size:.9rem; font-weight:600; color:#374151; }
+    .optin-q .opt{ font-weight:400; color:var(--soft); }
+    .optin-row{ display:flex; gap:8px; }
+    .optin-row input[type=email]{ flex:1 1 auto; min-width:0; }
+    .btn2{
+      flex:0 0 auto; border:0; border-radius:12px; cursor:pointer; font-family:inherit;
+      font-weight:700; font-size:.95rem; padding:0 16px; color:#fff;
+      background:var(--teal-600); transition:background .15s;
+    }
+    .btn2:hover{ background:var(--teal); }
+    .okmsg{ display:none; margin:12px 2px 0; color:var(--teal); font-weight:600; font-size:.92rem; }
+    .okmsg.show{ display:block; }
+
+    /* ---- Second-moment apps hint (revealed after download) ---- */
+    .appshint{ margin:16px 2px 0; padding-top:14px; border-top:1px solid #f0f1ef; font-size:.9rem; color:var(--muted); text-align:center; }
+
+    /* ---- Sheet proof image ---- */
+    .proof{ margin:26px 0 4px; }
+    .proof figure{ margin:0; }
+    .proof .frame{
+      background:#fff; padding:8px; border-radius:14px; border:1px solid #eef0ee;
+      box-shadow:0 22px 55px rgba(0,0,0,0.12),0 6px 16px rgba(0,0,0,0.06);
+    }
+    .proof img{ border-radius:8px; width:100%; height:auto; }
+    .proof figcaption{ text-align:center; font-size:.8rem; color:var(--soft); margin-top:10px; }
+
+    /* ---- Sections ---- */
+    section{ padding:38px 0; }
+    .eyebrow{ font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--teal-600); margin:0 0 6px; }
+    h2{ margin:0 0 22px; font-size:1.42rem; font-weight:800; letter-spacing:-.01em; color:#111827; }
+
+    .feat{ display:flex; gap:14px; padding:16px 0; border-top:1px solid #f0f1ef; }
+    .feat:first-of-type{ border-top:0; padding-top:4px; }
+    .feat .ic{ flex:0 0 42px; width:42px; height:42px; border-radius:11px;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(160deg,#eafaf4,#fff3ec); border:1px solid var(--line); }
+    .feat .ic svg{ width:22px; height:22px; stroke:var(--teal); fill:none; stroke-width:1.7; }
+    .feat h3{ margin:2px 0 3px; font-size:1.04rem; font-weight:700; color:#111827; }
+    .feat p{ margin:0; font-size:.96rem; color:var(--muted); }
+
+    /* ---- Belief / bridge ---- */
+    .belief{ background:linear-gradient(165deg,#fff5ed 0%,#fefefe 60%,#edfafa 100%);
+      border-top:1px solid rgba(0,0,0,0.04); border-bottom:1px solid rgba(0,0,0,0.04); }
+    .belief .card{
+      background:rgba(255,255,255,0.72); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      border:1px solid var(--line); border-radius:18px; padding:24px 22px;
+      box-shadow:0 16px 44px rgba(142,212,176,0.2);
+    }
+    .belief p{ font-size:1.05rem; color:#374151; margin:0 0 16px; }
+    .belief p:last-of-type{ margin-bottom:0; }
+    .belief .bridge{ font-size:1.05rem; color:#374151; }
+    .belief .bridge a{ font-weight:700; white-space:nowrap; }
+    .belief .sig{ margin-top:18px; font-size:.92rem; color:var(--muted); font-style:italic; }
+
+    /* ---- Footer ---- */
+    footer{ padding:30px 0 40px; text-align:center; border-top:1px solid #f0f1ef; }
+    footer .flinks{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px 18px; margin-bottom:14px; }
+    footer a{ font-size:.92rem; text-decoration:none; color:var(--teal-600); }
+    footer a:hover{ text-decoration:underline; }
+    footer .cr{ font-size:.78rem; color:var(--soft); }
+
+    /* ---- Desktop: hero becomes two columns ---- */
+    @media (min-width:820px){
+      .wrap{ max-width:960px; }
+      .hero .wrap{ display:flex; gap:48px; align-items:center; }
+      .hero .col-text{ flex:1 1 0; min-width:0; }
+      .hero .col-img{ flex:0 0 340px; }
+      .proof{ margin:0; }
+      h1{ font-size:2.15rem; }
+      section .wrap{ max-width:720px; }
+      .belief .wrap, footer .wrap{ max-width:720px; }
+    }
+    @media (prefers-reduced-motion:reduce){ .btn{ transition:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="col-text">
+        <div class="brandbar">
+          <img src="/guia/brain.webp" alt="" width="30" height="30" />
+          <span>KERIGAMI</span>
+        </div>
+        <h1>Uma folha de anotações da pregação, feita pra <span class="hl">quem tem TDAH</span>.</h1>
+        <p class="sub">É a folha que eu uso: espaço pra <span class="em">rabiscar</span>, espaço pra <span class="em">escrever</span> e um lugar pra guardar a <span class="em">única frase</span> que você quer levar pra casa.</p>
+
+        <div class="capture">
+          <!-- Primary action: free, ungated download -->
+          <a class="btn" id="downloadBtn" href="/guia/anotacoes-kerigami.pdf" download="anotacoes-kerigami.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            Baixar a folha (PDF)
+          </a>
+          <p class="freehint">Grátis, sem cadastro. É só baixar, imprimir e usar.</p>
+
+          <!-- Optional, ungated: stay-in-touch. Never blocks the download. -->
+          <form id="guiaForm" class="optin" novalidate>
+            <p class="optin-q">Quer que eu te avise quando sair uma folha nova? <span class="opt">(opcional)</span></p>
+            <div class="optin-row">
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                     placeholder="seu e-mail" aria-label="Seu e-mail (opcional)" />
+              <button class="btn2" type="submit">Me avisa</button>
+            </div>
+            <p class="err" id="err">Confere o e-mail?</p>
+            <p class="okmsg" id="ok">Valeu! Te aviso quando sair novidade. &#128153;</p>
+            <p class="lgpd">
+              Uso seu e-mail só pra avisar de folhas novas e novidades da Kerigami. Sem spam.
+              Você pode sair ou apagar seus dados quando quiser em
+              <a href="mailto:support@kerigami.com">support@kerigami.com</a>.
+            </p>
+          </form>
+
+          <!-- Second moment: revealed lightly after the download starts. -->
+          <p class="appshint" id="appsHint" hidden>
+            Curtiu? A gente também faz apps pra mentes neurodivergentes.
+            <a href="https://kerigami.com/pt/" data-apps-link>conhecer a Kerigami &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-img">
+        <div class="proof">
+          <figure>
+            <div class="frame">
+              <img src="/guia/sheet.webp" width="900" height="1165"
+                   alt="Prévia da folha de anotações da mensagem: seções Traço, Palavras-chave, Passos, Entrego a Deus e Oração, com bordas de mandala pra colorir." />
+            </div>
+            <figcaption>A folha inteira, em uma página. Preta e branca — pronta pra imprimir.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ O QUE TEM NA FOLHA ============ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">O que tem na folha</p>
+      <h2>Cada parte tem um porquê pra um cérebro com TDAH</h2>
+
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <div>
+          <h3>Traço &mdash; espaço pra rabiscar</h3>
+          <p>Um quadro grande pra desenhar enquanto escuta. Manter as mãos ocupadas ajuda a mente a ficar presente &mdash; e aqui rabiscar não é distração, é parte do plano.</p>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.5 12.5L20 3"/><path d="M17 6l3 3"/><path d="M14 9l3 3"/></svg></div>
+        <div>
+          <h3>Palavras-chave</h3>
+          <p>Em vez de tentar anotar tudo (e se perder no meio), você guarda só as poucas palavras que importam. Menos pressão, mais do que realmente fica.</p>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h5v5H4z"/><path d="M15 12h5v5h-5z"/><path d="M9 9.5h4a2 2 0 0 1 2 2v3"/><path d="M13 13l2 1.5-2 1.5"/></svg></div>
+        <div>
+          <h3>Passos: Entendi que&hellip; / Então vou&hellip; / Quando e como&hellip;</h3>
+          <p>Três caixinhas que viram a mensagem em ação: o que você entendeu, o que vai fazer e quando. Sem aquela página em branco gigante pra encarar.</p>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-8.5C1.5 9 3.5 5.5 7 5.5c2 0 3.5 1.5 5 3.5 1.5-2 3-3.5 5-3.5 3.5 0 5.5 3.5 4 7-2 4.15-9 8.5-9 8.5z"/></svg></div>
+        <div>
+          <h3>Entrego a Deus &amp; Oração</h3>
+          <p>Um lugar pra desenhar o que você entrega &mdash; seu coração, seus planos, sua família &mdash; e escrever sua oração. Colorir os detalhes também acalma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUE EXISTE (bridge) ============ -->
+  <section class="belief">
+    <div class="wrap">
+      <p class="eyebrow">Por que essa folha existe</p>
+      <div class="card">
+        <p>Durante muito tempo eu achei que a minha cabeça vagando no meio da pregação era falta de fé ou desrespeito. Não era. É só o jeito que alguns cérebros funcionam &mdash; e com a estrutura certa, tudo muda. Foi por isso que criei essa folha: pra transformar a distração em presença.</p>
+        <p class="bridge">É a mesma convicção que me faz construir ferramentas pra famílias com TDAH na Kerigami. <a href="https://kerigami.com/pt/" data-apps-link>Conhecer a Kerigami &rarr;</a></p>
+        <p class="sig">&mdash; Welbr, da Kerigami</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="flinks">
+        <a href="https://instagram.com/kerigami.br" target="_blank" rel="noopener">@kerigami.br</a>
+        <a href="https://kerigami.com/pt/" data-apps-link>kerigami.com</a>
+        <a href="https://kerigami.com/pt/privacy.html">Privacidade</a>
+        <a href="mailto:support@kerigami.com">Contato</a>
+      </div>
+      <div class="cr">&copy; 2026 Kerigami LLC</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+      var SUPA_URL = "https://xrhbovjoqgashusczlxh.supabase.co";
+      var SUPA_KEY = "sb_publishable_0xO0Xx15RqyJ1AofGFM-yg_ftlc_bKz";
+
+      // Optional campaign tag from ?c= (e.g. ?c=reel-set); defaults to "guia".
+      var campaign = "guia";
+      try {
+        var raw = new URLSearchParams(location.search || "").get("c");
+        if (raw && /^[A-Za-z0-9_-]{1,40}$/.test(raw)) campaign = raw;
+      } catch (e) {}
+
+      // Fire-and-forget event logging. keepalive lets it survive navigation.
+      function track(event) {
+        try {
+          fetch(SUPA_URL + "/rest/v1/guia_events", {
+            method: "POST", keepalive: true,
+            headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY,
+                       "Content-Type": "application/json", "Prefer": "return=minimal" },
+            body: JSON.stringify({ event: event, campaign: campaign })
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
+      track("view");
+
+      var form = document.getElementById("guiaForm");
+      var emailEl = document.getElementById("email");
+      var errEl = document.getElementById("err");
+      var okEl = document.getElementById("ok");
+      var appsHint = document.getElementById("appsHint");
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // The download is NEVER gated. This form is a purely optional "notify me".
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = (emailEl.value || "").trim().toLowerCase();
+        if (!email) { emailEl.focus(); return; }   // empty: they skipped it — do nothing
+        if (!EMAIL_RE.test(email)) {
+          errEl.classList.add("show");
+          emailEl.focus();
+          return;
+        }
+        errEl.classList.remove("show");
+        track("submit");
+
+        // Best-effort list capture. 201 (new) and 409 (already on the list) are
+        // both fine; any failure is swallowed. Nothing here blocks anything.
+        try {
+          fetch(SUPA_URL + "/rest/v1/guia_leads", {
+            method: "POST", keepalive: true,
+            headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY,
+                       "Content-Type": "application/json", "Prefer": "return=minimal" },
+            body: JSON.stringify({ email: email, campaign: campaign, consent: true })
+          }).catch(function () {});
+        } catch (e) {}
+
+        // Quietly swap the little form row for a thank-you.
+        document.querySelector(".optin-q").style.display = "none";
+        document.querySelector(".optin-row").style.display = "none";
+        okEl.classList.add("show");
+      });
+
+      document.getElementById("downloadBtn").addEventListener("click", function () {
+        track("download");
+        if (appsHint) appsHint.hidden = false;   // the light "second moment"
+      });
+
+      var appLinks = document.querySelectorAll("[data-apps-link]");
+      for (var i = 0; i < appLinks.length; i++) {
+        appLinks[i].addEventListener("click", function () { track("apps_click"); });
+      }
+    })();
+  </script>
+</body>
+</html>
