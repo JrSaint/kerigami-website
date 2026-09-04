@@ -180,7 +180,7 @@
         Espaço pra rabiscar, guardar palavras-chave e levar pra casa o que realmente ficou da mensagem &mdash; sem tentar anotar tudo.
       </p>
       <div class="mt-8">
-        <a id="downloadBtn" href="/guia/anotacoes-kerigami.pdf" download="anotacoes-kerigami.pdf" target="_blank" rel="noopener"
+        <a id="downloadBtn" data-download href="/guia/anotacoes-kerigami.pdf" download="anotacoes-kerigami.pdf" target="_blank" rel="noopener"
            class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-teal-600 text-white font-semibold text-lg shadow-lg hover:bg-teal-700 hover:shadow-xl transition-all duration-200">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
           Baixar a folha grátis
@@ -188,19 +188,10 @@
         <p class="mt-3 text-sm text-gray-400">Grátis. Sem cadastro. É só baixar, imprimir e usar.</p>
       </div>
     </div>
-
-    <!-- Worksheet preview, framed in the site's story-card -->
-    <div class="max-w-2xl mx-auto px-6 mt-10 sm:mt-12">
-      <div class="story-card card-float rounded-2xl border border-mint-200/40 p-3 sm:p-4" style="backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(142,212,176,0.25), 0 8px 20px rgba(0,0,0,0.1);">
-        <img src="/guia/sheet.webp" width="900" height="1165"
-             alt="Prévia da folha de anotações da mensagem: espaços pra desenhar, palavras-chave, passos e oração, com bordas pra colorir."
-             class="w-full rounded-lg relative z-10" loading="lazy" />
-      </div>
-    </div>
   </section>
 
   <!-- Subtle apps nudge -->
-  <section class="section-reveal relative z-10 pt-10 pb-12 sm:pt-12 sm:pb-16">
+  <section class="section-reveal relative z-10 pt-8 pb-8 sm:pt-10 sm:pb-10">
     <div class="max-w-3xl mx-auto px-6">
       <div class="rounded-2xl border border-mint-200/40 bg-white/55 p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-5 text-center sm:text-left" style="backdrop-filter:blur(8px);">
         <div class="flex items-center justify-center gap-3 flex-shrink-0">
@@ -215,6 +206,19 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Worksheet preview, framed in the site's story-card -->
+  <section class="section-reveal relative z-10 pt-2 pb-14 sm:pb-16">
+    <div class="max-w-2xl mx-auto px-6">
+      <a href="/guia/anotacoes-kerigami.pdf" download="anotacoes-kerigami.pdf" target="_blank" rel="noopener" data-download
+         title="Baixar a folha (PDF)" aria-label="Baixar a folha em PDF"
+         class="story-card card-float block rounded-2xl border border-mint-200/40 p-3 sm:p-4 cursor-pointer transition-opacity hover:opacity-95" style="backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(142,212,176,0.25), 0 8px 20px rgba(0,0,0,0.1);">
+        <img src="/guia/sheet.webp" width="900" height="1165"
+             alt="Prévia da folha de anotações da mensagem: espaços pra desenhar, palavras-chave, passos e oração, com bordas pra colorir."
+             class="w-full rounded-lg relative z-10" loading="lazy" />
+      </a>
     </div>
   </section>
 
@@ -258,7 +262,10 @@
         } catch (e) {}
       }
       track("view");
-      document.getElementById("downloadBtn").addEventListener("click", function () { track("download"); });
+      var downloadEls = document.querySelectorAll("[data-download]");
+      for (var d = 0; d < downloadEls.length; d++) {
+        downloadEls[d].addEventListener("click", function () { track("download"); });
+      }
       var appLinks = document.querySelectorAll("[data-apps-link]");
       for (var i = 0; i < appLinks.length; i++) {
         appLinks[i].addEventListener("click", function () { track("apps_click"); });
